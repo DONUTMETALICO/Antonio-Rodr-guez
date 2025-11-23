@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Antonio Rodríguez Tárraga - Estudiante UFV Business Analytics & Computer Engineering">
+    <title>Antonio Rodríguez | Portfolio Profesional</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #60a5fa;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header/Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1rem 5%;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 4rem;
+            padding: 8rem 5% 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .hero-content .highlight {
+            color: var(--primary);
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 30px;
+            z-index: -1;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            border-radius: 30px;
+            display: block;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--gray);
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 1rem 0;
+        }
+
+        .section-description {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Profile Section */
+        .profile-content {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 4rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .profile-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category i {
+            font-size: 1.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f1f5f9;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-list li i {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        /* Education Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 2;
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            grid-column: 1;
+            grid-row: 1;
+            text-align: right;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--light);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -62px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -62px;
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            color: var(--dark);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .timeline-date {
+            display: flex;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .date-badge {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Languages Section */
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .language-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .language-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .language-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .language-card h3 {
+            color: var(--dark);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .language-level {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--white);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .info-details h4 {
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .info-details p {
+            color: var(--gray);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .contact-info {
+                align-items: center;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                grid-column: 1;
+            }
+
+            .timeline-item:nth-child(even) .timeline-date {
+                grid-column: 1;
+                text-align: left;
+            }
+
+            .timeline-content::before {
+                left: -48px !important;
+            }
+
+            .timeline-date {
+                padding: 1rem 0 1rem 4rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .skills-grid,
+            .languages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">AR</div>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class='bx bx-menu'></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Inicio</a></li>
+                <li><a href="#profile" onclick="closeMenu()">Perfil</a></li>
+                <li><a href="#skills" onclick="closeMenu()">Habilidades</a></li>
+                <li><a href="#education" onclick="closeMenu()">Educación</a></li>
+                <li><a href="#languages" onclick="closeMenu()">Idiomas</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>ANTONIO <span class="highlight">RODRÍGUEZ</span></h1>
+            <p class="subtitle">UFV Student | Business Analytics & Computer Engineering</p>
+            <p>
+                Apasionado por la tecnología actual y el mundo empresarial. Me dedico al emprendimiento con el objetivo de ofrecer servicios relacionados con tendencias digitales como desarrollo de software e inteligencia artificial.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <i class='bx bx-envelope'></i>
+                    Contáctame
+                </a>
+                <a href="#" class="btn btn-outline" download>
+                    <i class='bx bx-download'></i>
+                    Descargar CV
+                </a>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class='bx bx-phone'></i>
+                    <span>+34 600 342 115</span>
+                </div>
+                <div class="contact-item">
+                    <i class='bx bx-envelope'></i>
+                    <span>antoniorodrigueztarraga@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class='bx bx-map'></i>
+                    <span>10 Antonio Leyva Street, Albacete</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-image-wrapper">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='600'%3E%3Crect fill='%232563eb' width='500' height='600'/%3E%3Ctext x='50%25' y='45%25' font-size='100' fill='white' text-anchor='middle' font-family='Arial' font-weight='bold'%3EAR%3C/text%3E%3Ctext x='50%25' y='55%25' font-size='30' fill='white' text-anchor='middle' font-family='Arial'%3EUFV Student%3C/text%3E%3C/svg%3E" alt="Antonio Rodríguez">
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile">
+        <div class="section-header">
+            <div class="section-label">Sobre Mí</div>
+            <h2 class="section-title">Mi Perfil Profesional</h2>
+        </div>
+        <div class="profile-content">
+            <p>
+                Soy una persona apasionada por la tecnología actual y el campo empresarial. Me dedico al mundo del emprendimiento con el objetivo de ofrecer servicios relacionados con las tendencias digitales, como el desarrollo de software, la inteligencia artificial y mucho más.
+            </p>
+            <p>
+                Tengo confianza en alcanzar mis metas y ambiciones. Me describiría como una persona muy ambiciosa que quiere crear algo grandioso en el futuro. Actualmente estudio Business Analytics e Informática en la Universidad Francisco de Vitoria, carreras que considero totalmente compatibles con mis objetivos y aspiraciones.
+            </p>
+            <p>
+                Mi formación combina conocimientos técnicos en ingeniería informática con habilidades analíticas empresariales, preparándome para enfrentar los desafíos del mundo digital moderno y contribuir al desarrollo de soluciones tecnológicas innovadoras.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header">
+            <div class="section-label">Competencias</div>
+            <h2 class="section-title">Mis Habilidades</h2>
+            <p class="section-description">
+                Conjunto de competencias desarrolladas a través de mi formación académica y experiencia personal
+            </p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><i class='bx bx-briefcase'></i> Gestión & Liderazgo</h3>
+                <ul class="skill-list">
+                    <li><i class='bx bx-check'></i> Project Management</li>
+                    <li><i class='bx bx-check'></i> Teamwork</li>
+                    <li><i class='bx bx-check'></i> Time Management</li>
+                    <li><i class='bx bx-check'></i> Leadership</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class='bx bx-message'></i> Comunicación</h3>
+                <ul class="skill-list">
+                    <li><i class='bx bx-check'></i> Effective Communication</li>
+                    <li><i class='bx bx-check'></i> Public Speaking</li>
+                    <li><i class='bx bx-check'></i> Presentation Skills</li>
+                    <li><i class='bx bx-check'></i> Written Communication</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class='bx bx-code-alt'></i> Técnicas</h3>
+                <ul class="skill-list">
+                    <li><i class='bx bx-check'></i> Software Development</li>
+                    <li><i class='bx bx-check'></i> Data Analytics</li>
+                    <li><i class='bx bx-check'></i> Business Intelligence</li>
+                    <li><i class='bx bx-check'></i> Digital Trends</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-header">
+            <div class="section-label">Trayectoria Académica</div>
+            <h2 class="section-title">Mi Educación</h2>
+            <p class="section-description">
+                Recorrido educativo desde la educación básica hasta los estudios universitarios
+            </p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    <span class="date-badge">2012 - 2018</span>
+                </div>
+                <div class="timeline-content">
+                    <h3>Educación Primaria</h3>
+                    <h4>María Inmaculada, Albacete</h4>
+                    <p>
+                        Adquirí habilidades académicas básicas fundamentales. Durante esta etapa desarrollé una base sólida en matemáticas, ciencias y lengua, estableciendo los cimientos para mi futura trayectoria educativa.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    <span class="date-badge">2018 - 2022</span>
+                </div>
+                <div class="timeline-content">
+                    <h3>Educación Secundaria (ESO)</h3>
+                    <h4>María Inmaculada, Albacete</h4>
+                    <p>
+                        Adquirí conceptos básicos sobre economía y ciencias como matemáticas y física. Inicié mi viaje de adquisición de conocimiento en una variedad de idiomas, desarrollando habilidades lingüísticas y científicas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    <span class="date-badge">2022 - 2024</span>
+                </div>
+                <div class="timeline-content">
+                    <h3>Bachillerato Tecnológico</h3>
+                    <h4>Colegio C.E.D.E.S</h4>
+                    <p>
+                        En esta etapa elegí estudiar educación tecnológica basada en microeconomía y negocios. Finalicé con una nota de 7,3 sobre 10. Durante esta fase enfrenté el desafío de la EVAU, superándola con 10 sobre 14.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    <span class="date-badge">2024 - Actualidad</span>
+                </div>
+                <div class="timeline-content">
+                    <h3>Estudios Universitarios</h3>
+                    <h4>Universidad Francisco de Vitoria</h4>
+                    <p>
+                        Estoy muy motivado estudiando Business Analytics e Informática. Considero que estas carreras son compatibles con mis metas y ambiciones, combinando análisis de datos con ingeniería informática para mi futuro emprendedor.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages">
+        <div class="section-header">
+            <div class="section-label">Idiomas</div>
+            <h2 class="section-title">Competencias Lingüísticas</h2>
+            <p class="section-description">
+                Dominio de múltiples idiomas para comunicación global
+            </p>
+        </div>
+        <div class="languages-grid">
+            <div class="language-card">
+                <div class="language-icon">🇪🇸</div>
+                <h3>Español</h3>
+                <span class="language-level">Nativo</span>
+                <p style="margin-top: 1rem; color: var(--gray);">
+                    Lengua materna con dominio completo oral y escrito
+                </p>
+            </div>
+
+            <div class="language-card">
+                <div class="language-icon">🇬🇧</div>
+                <h3>Inglés</h3>
+                <span class="language-level">Intermedio B2</span>
